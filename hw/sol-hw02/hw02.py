@@ -32,9 +32,9 @@ def product(n, term):
     162
     """
     "*** YOUR CODE HERE ***"
-    num, i = 0, 1
+    num, i = 1, 1
     while i <= n:
-        num, i = num + term(i), i + 1
+        num, i = num * term(i), i + 1
     return num
 
 def accumulate(fuse, start, n, term):
@@ -56,10 +56,11 @@ def accumulate(fuse, start, n, term):
     >>> accumulate(lambda x, y: x + y + 1, 2, 3, square)
     19
     """
-    total, k = start, 1
-    while k <= n:
-        total, k = fuse(total, term(k)), k + 1
-    return total
+    "*** YOUR CODE HERE ***"
+    res, i = start, 1
+    while i <= n:
+        res, i = fuse(res, term(i)), i + 1 
+    return res
 
 # Alternative solution
 def accumulate_reverse(fuse, start, n, term):
@@ -82,7 +83,6 @@ def summation_using_accumulate(n, term):
     ['Expr', 'Return']
     """
     return accumulate(add, 0, n, term)
-
 
 def product_using_accumulate(n, term):
     """Returns the product: term(1) * ... * term(n), using accumulate.
@@ -112,10 +112,11 @@ def make_repeater(f, n):
     >>> make_repeater(square, 3)(5) # square(square(square(5)))
     390625
     """
+    "*** YOUR CODE HERE ***" 
     def repeater(x):
-        k = 0
-        while k < n:
-            x, k = f(x), k + 1
-        return x
+        res, i = x, 1
+        while i <= n:
+           res, i = f(res), i + 1
+        return res
+    
     return repeater
-
