@@ -22,6 +22,18 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    res = 0
+    state = False
+    while num_rolls:
+        temp = dice()
+        res += temp
+        if temp == 1:
+            state = True
+        num_rolls -= 1
+    
+    if state:
+        res = 1
+    return res
     # END PROBLEM 1
 
 
@@ -34,6 +46,13 @@ def boar_brawl(player_score, opponent_score):
     """
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    player = player_score % 10
+    opponent = opponent_score // 10 % 10
+    diff = abs(player - opponent) * 3
+    if diff > 1:
+        return diff
+    
+    return 1
     # END PROBLEM 2
 
 
@@ -52,6 +71,9 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
     assert num_rolls <= 10, 'Cannot roll more than 10 dice.'
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    if num_rolls == 0:
+        return boar_brawl(player_score, opponent_score)
+    return roll_dice(num_rolls, dice) 
     # END PROBLEM 3
 
 
@@ -77,6 +99,13 @@ def num_factors(n):
     """Return the number of factors of N, including 1 and N itself."""
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    i = 1
+    res = 0
+    while i <= n:
+        if n % i == 0
+            res += 1
+        i += 1
+    return res
     # END PROBLEM 4
 
 def sus_points(score):
