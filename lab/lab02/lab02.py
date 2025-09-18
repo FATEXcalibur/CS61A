@@ -132,16 +132,18 @@ def cycle(f1, f2, f3):
     "*** YOUR CODE HERE ***"
     def g(n):
         def h(x):
-            if n == 0:
-                return x
-            if n % 3 == 1:
-                n -= 1
-                return h(f1(x))
-            if n % 3 == 2:
-                n -= 1
-                return h(f2(x))
-            if n % 3 == 0:
-                n -= 1
-                return h(f3(x))
-        return h
+            i, res = 0, 0
+            while not i > n:
+                if i == 0:
+                    res = x
+                elif i % 3 == 1:
+                    res = f1(res)
+                elif i % 3 == 2:
+                    res = f2(res)
+                elif i % 3 == 0:
+                    res = f3(res)
+                i += 1
+            return res
 
+        return h
+    return g
